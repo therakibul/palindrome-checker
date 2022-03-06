@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&family=Roboto+Serif:wght@600&display=swap"
+        rel="stylesheet">
+    <title>Palindrome Checker</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: cadetblue;
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        .wrapper {
+            background: white;
+            height: 300px;
+            width: 350px;
+            margin: 0 auto;
+            margin-top: 150px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .content {
+            padding: 5px 20px;
+            overflow: hidden;
+        }
+
+        input[type="text"] {
+            display: block;
+            width: 98%;
+            height: 40px;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background: palegreen;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+
+        }
+
+        input[type="submit"]:hover {
+            cursor: pointer;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+            left: 70px;
+        }
+
+        span {
+            color: lightcoral;
+        }
+
+        p#output {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <h1 class="title">Palindrome Checker</h1>
+            <p id="output"></p>
+            <form method="POST" id="formInput">
+                <input type="text" name="word" id="word">
+                <input type="submit" name="submit" id="submit" value="Submit">
+            </form>
+            <footer>
+                <p>Designed by <span>Md Rakibul Hasan</span></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        let formInput = document.forms["formInput"];
+        formInput.addEventListener("submit", function (e) {
+            e.preventDefault();
+            let output = document.querySelector("#output");
+            let inputWord = document.querySelector("#word").value;
+            inputWord = inputWord.replace(/\W|_/g, "");
+            let reverse = inputWord.split("").reverse().join("");
+            if (inputWord === reverse) {
+                output.innerText = `${inputWord} is Palindrome`;
+            } else {
+                output.innerText = `${inputWord} is not Palindrome`;
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
